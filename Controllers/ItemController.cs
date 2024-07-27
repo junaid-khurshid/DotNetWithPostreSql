@@ -14,6 +14,14 @@ namespace DotNetWithPostreSql.Controllers
             _context = context;
         }
 
+        [HttpGet("{id}")]
+        public async Task<Item> GetItem(int id)
+        {
+            var item = await _context.Items.FindAsync(id);
+
+            return item;
+        }
+
         [HttpPost]
         public async Task<Item> PostItem(Item item)
         {
